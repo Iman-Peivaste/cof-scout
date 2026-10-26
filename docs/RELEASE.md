@@ -7,7 +7,7 @@
    data DOI.
 4. Replace `ZENODO_DATA_DOI` and `ZENODO_DOI` placeholders in the repository.
 5. Tag `v1.0.0` on GitHub. Let the integration mint the software DOI.
-6. Replace `ZENODO_SOFTWARE_DOI`, `PAPER_DOI`, repository-owner, ORCID and public
-   contact placeholders in `README.md`, `CITATION.cff`, and `.zenodo.json`.
+6. Replace `ZENODO_SOFTWARE_DOI`, `PAPER_DOI`, repository-owner and ORCID
+   placeholders in `README.md`, `CITATION.cff`, and `.zenodo.json`.
 7. Insert the software and data DOIs in the paper's Code and Data Availability
    statements, then run `python scripts/verify_freeze.py` and the offline CI suite.

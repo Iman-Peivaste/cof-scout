@@ -72,5 +72,4 @@ OPENAI_BASE_URL=... OPENAI_API_KEY=... python scripts/rerun_campaigns.py --help
 ## Licences and contact
 
 Code is MIT licensed. The Zenodo data archive is CC BY 4.0. Contact: Iman Peivaste,
-Luxembourg Institute of Science and Technology (LIST); public contact address to be
-inserted before release.
+Luxembourg Institute of Science and Technology (LIST), <iman.peivaste@list.lu>.
