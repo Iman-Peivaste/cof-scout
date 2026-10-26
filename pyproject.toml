@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cof-scout"
+version = "1.0.0"
+description = "Auditable language-model-agent and algorithmic baselines for COF inverse design"
+readme = "README.md"
+requires-python = "==3.12.2"
+license = {text = "MIT"}
+authors = [
+  {name = "Iman Peivaste"},
+  {name = "Ahmed Makradi"},
+  {name = "Salim Belouettar"},
+]
+dependencies = [
+  "numpy==1.26.4",
+  "scipy==1.17.1",
+  "scikit-learn==1.5.1",
+  "pandas==2.3.2",
+  "matplotlib>=3.8,<3.11",
+  "httpx>=0.27,<1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.3,<9", "ruff>=0.8,<1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cof_scout"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [
+  "src/cof_scout/agent/contracts.py",
+  "src/cof_scout/agent/loop.py",
+  "src/cof_scout/agent/memory.py",
+  "src/cof_scout/agent/prompt_builder.py",
+  "src/cof_scout/agent/protocol.py",
+  "src/cof_scout/agent/static_portfolio.py",
+  "src/cof_scout/agent/tools.py",
+  "src/cof_scout/analysis/campaign.py",
+  "src/cof_scout/analysis/ground_truth.py",
+  "src/cof_scout/analysis/run.py",
+  "src/cof_scout/analysis/study.py",
+  "src/cof_scout/analysis/trace.py",
+  "src/cof_scout/baselines/reference_sensitivity.py",
+  "src/cof_scout/baselines/search.py",
+  "src/cof_scout/inventory/assembly.py",
+  "src/cof_scout/oracle/calibration.py",
+  "src/cof_scout/oracle/evaluation.py",
+  "src/cof_scout/oracle/geometry.py",
+  "src/cof_scout/oracle/stability.py",
+  "src/cof_scout/oracle/xtb.py",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["tests/legacy"]

@@ -1,0 +1,7 @@
+{
+  "study_id": "cof_scout_v2_identifier_relabel_control",
+  "models": ["claude-opus-5-5", "gpt-6.1-sol"],
+  "mode": "static_outcome_blind_identifier_permutation",
+  "budget": 50,
+  "replicates_per_model": 5
+}

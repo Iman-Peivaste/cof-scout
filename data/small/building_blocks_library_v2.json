@@ -1,0 +1,1575 @@
+{
+  "version": "2.0",
+  "source_summary": {
+    "ara1_library": [
+      "internal"
+    ],
+    "core_cof_metadata": [
+      "ALL-COF-1242.xlsx"
+    ],
+    "redd_coffee": [
+      "10.1039/D3TA00470H"
+    ],
+    "vinylene_literature": [
+      "10.1039/C8SC04647E"
+    ]
+  },
+  "topologies": [
+    {
+      "id": "TP001",
+      "name": "hcb",
+      "required_connections": [
+        3,
+        2
+      ],
+      "notes": "C3 + C2 net"
+    },
+    {
+      "id": "TP002",
+      "name": "sql",
+      "required_connections": [
+        4,
+        2
+      ],
+      "notes": "C4 + C2 net"
+    },
+    {
+      "id": "TP003",
+      "name": "kgm",
+      "required_connections": [
+        3,
+        3
+      ],
+      "notes": "C3 + C3 net"
+    },
+    {
+      "id": "TP004",
+      "name": "dual-pore",
+      "required_connections": [
+        4,
+        3
+      ],
+      "notes": "Mixed high-connectivity"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "N001",
+      "name": "1,3,5-triformylbenzene",
+      "smiles": "O=Cc1cc(C=O)cc(C=O)c1",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "Classic C3 aldehyde node"
+    },
+    {
+      "id": "N002",
+      "name": "2,4,6-triformylphloroglucinol (Tp)",
+      "smiles": "O=Cc1c(O)c(C=O)c(O)c(C=O)c1O",
+      "n_connections": 3,
+      "reactive_group": "aldehyde_ketoenamine",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja301130k"
+      ],
+      "compatible_linkages": [
+        "beta-ketoenamine",
+        "imine"
+      ],
+      "notes": "Forms irreversible beta-ketoenamine"
+    },
+    {
+      "id": "N003",
+      "name": "1,3,5-tris(4-formylphenyl)benzene",
+      "smiles": "O=Cc1ccc(-c2cc(-c3ccc(C=O)cc3)cc(-c3ccc(C=O)cc3)c2)cc1",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "Expanded C3 aldehyde"
+    },
+    {
+      "id": "N004",
+      "name": "2,4,6-tris(4-formylphenyl)-1,3,5-triazine",
+      "smiles": "O=Cc1ccc(-c2nc(-c3ccc(C=O)cc3)nc(-c3ccc(C=O)cc3)n2)cc1",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "Electron-poor triazine-centered node"
+    },
+    {
+      "id": "N005",
+      "name": "tetra(4-formylphenyl)pyrene",
+      "smiles": "O=Cc1ccc(-c2cc3ccc(-c4ccc(C=O)cc4)c(-c4ccc(C=O)cc4)c3cc2-c2ccc(C=O)cc2)cc1",
+      "n_connections": 4,
+      "reactive_group": "aldehyde",
+      "tier": 1,
+      "source_dois": [
+        "10.1002/anie.201300402"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "C4 node for sql frameworks"
+    },
+    {
+      "id": "N006",
+      "name": "tetra(4-aminophenyl)pyrene",
+      "smiles": "Nc1ccc(-c2cc3ccc(-c4ccc(N)cc4)c(-c4ccc(N)cc4)c3cc2-c2ccc(N)cc2)cc1",
+      "n_connections": 4,
+      "reactive_group": "amine",
+      "tier": 1,
+      "source_dois": [
+        "10.1002/anie.201300402"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "C4 amine node"
+    },
+    {
+      "id": "N007",
+      "name": "hexahydroxytriphenylene (HHTP)",
+      "smiles": "Oc1cc2c(cc1O)c1cc(O)c(O)cc1c1cc(O)c(O)cc21",
+      "n_connections": 3,
+      "reactive_group": "catechol",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "compatible_linkages": [
+        "boronate_ester"
+      ],
+      "notes": "Boronate ester node"
+    },
+    {
+      "id": "N008",
+      "name": "triphenylene triboronic acid",
+      "smiles": "OB(O)c1ccc2c(c1)ccc1ccc(B(O)O)cc1c2B(O)O",
+      "n_connections": 3,
+      "reactive_group": "boronic_acid",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "compatible_linkages": [
+        "boronate_ester",
+        "boroxine"
+      ],
+      "notes": "Tripodal boronic acid node"
+    },
+    {
+      "id": "N009",
+      "name": "benzene-1,3,5-tricarbonitrile",
+      "smiles": "N#Cc1cc(C#N)cc(C#N)c1",
+      "n_connections": 3,
+      "reactive_group": "nitrile",
+      "tier": 2,
+      "source_dois": [
+        "10.1021/ja3082398"
+      ],
+      "compatible_linkages": [
+        "triazine"
+      ],
+      "notes": "Triazine-forming nitrile node"
+    },
+    {
+      "id": "N010",
+      "name": "hexaaminobenzene",
+      "smiles": "Nc1c(N)c(N)c(N)c(N)c1N",
+      "n_connections": 6,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "triazine"
+      ],
+      "notes": "High-connectivity aromatic amine"
+    },
+    {
+      "id": "N011",
+      "name": "tris(4-aminophenyl)amine (TAPA)",
+      "smiles": "Nc1ccc(N(c2ccc(N)cc2)c2ccc(N)cc2)cc1",
+      "n_connections": 3,
+      "reactive_group": "amine",
+      "tier": 1,
+      "source_dois": [
+        "10.1002/adma.201303577"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Electron-rich C3 amine node"
+    },
+    {
+      "id": "N012",
+      "name": "tris(4-aminophenyl)triazine (TAPT)",
+      "smiles": "Nc1ccc(-c2nc(-c3ccc(N)cc3)nc(-c3ccc(N)cc3)n2)cc1",
+      "n_connections": 3,
+      "reactive_group": "amine",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/C6SC04606F"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Acceptor-centered C3 amine"
+    },
+    {
+      "id": "N013",
+      "name": "tetra(4-cyanophenyl)methane",
+      "smiles": "N#Cc1ccc(C(c2ccc(C#N)cc2)(c2ccc(C#N)cc2)c2ccc(C#N)cc2)cc1",
+      "n_connections": 4,
+      "reactive_group": "nitrile",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "triazine"
+      ],
+      "notes": "C4 nitrile precursor"
+    },
+    {
+      "id": "N014",
+      "name": "perylene-3,4,9,10-tetracarbaldehyde",
+      "smiles": "c1cc2c(C=O)c(C=O)c3cccc4ccc5c(C=O)c(C=O)c(c1)c5c4c23",
+      "n_connections": 4,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "Extended pi C4 aldehyde. SMILES corrected 2026-07-25: original had broken ring connectivity (3 CHO on non-perylene scaffold); new SMILES is perylene-3,4,9,10-tetracarbaldehyde C24H12O4 with 2 adjacent CHO pairs at peri positions."
+    },
+    {
+      "id": "N015",
+      "name": "triformyltriphenylamine",
+      "smiles": "O=Cc1ccc(N(c2ccc(C=O)cc2)c2ccc(C=O)cc2)cc1",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "Donor-centered C3 aldehyde"
+    },
+    {
+      "id": "N016",
+      "name": "triformylcarbazole",
+      "smiles": "O=Cc1ccc2[nH]c3ccc(C=O)cc3c2c1C=O",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "Donor node from computational set"
+    },
+    {
+      "id": "N017",
+      "name": "triformylthienothiophene",
+      "smiles": "O=Cc1sc2cc(C=O)sc2c1C=O",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "vinylene"
+      ],
+      "notes": "Sulfur-containing donor node"
+    },
+    {
+      "id": "N018",
+      "name": "tris(4-boronic acid phenyl)benzene",
+      "smiles": "OB(O)c1ccc(-c2cc(-c3ccc(B(O)O)cc3)cc(-c3ccc(B(O)O)cc3)c2)cc1",
+      "n_connections": 3,
+      "reactive_group": "boronic_acid",
+      "tier": 2,
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "compatible_linkages": [
+        "boronate_ester",
+        "boroxine"
+      ],
+      "notes": "C3 boronic acid node"
+    },
+    {
+      "id": "N019",
+      "name": "tetra(4-boronic acid phenyl)porphyrin-freebase",
+      "smiles": "OB(O)c1ccc(-c2cc3nc(c4ccc(B(O)O)cc4)c(-c4ccc(B(O)O)cc4)c4nc(c5ccc(B(O)O)cc5)cc(c24)[nH]3)cc1",
+      "n_connections": 4,
+      "reactive_group": "boronic_acid",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "boronate_ester"
+      ],
+      "notes": "Porphyrinic boronic node"
+    },
+    {
+      "id": "N020",
+      "name": "triformylbenzotriazole",
+      "smiles": "O=Cc1ccc2nn(-c3ccc(C=O)cc3)c(-c3ccc(C=O)cc3)c2c1",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "N-rich acceptor node"
+    },
+    {
+      "id": "N021",
+      "name": "tri(4-formylphenyl)phosphine oxide",
+      "smiles": "O=P(c1ccc(C=O)cc1)(c1ccc(C=O)cc1)c1ccc(C=O)cc1",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "Strong acceptor center"
+    },
+    {
+      "id": "N022",
+      "name": "tetrakis(4-formylphenyl)ethylene",
+      "smiles": "O=Cc1ccc(C(=C(c2ccc(C=O)cc2)c2ccc(C=O)cc2)c2ccc(C=O)cc2)cc1",
+      "n_connections": 4,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "vinylene"
+      ],
+      "notes": "AIE-like C4 node"
+    },
+    {
+      "id": "N023",
+      "name": "benzene-1,3,5-tricarboxylic anhydride precursor",
+      "smiles": "O=C1OC(=O)c2cc(C(=O)O)cc(C(=O)O)c21",
+      "n_connections": 3,
+      "reactive_group": "anhydride",
+      "tier": 3,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imide"
+      ],
+      "notes": "Imide-capable C3 precursor"
+    },
+    {
+      "id": "N024",
+      "name": "triformylpyridine",
+      "smiles": "O=Cc1ncc(C=O)cc1C=O",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "N-heteroaromatic C3 aldehyde"
+    },
+    {
+      "id": "N025",
+      "name": "tetraformylbenzene",
+      "smiles": "O=Cc1cc(C=O)c(C=O)c(C=O)c1",
+      "n_connections": 4,
+      "reactive_group": "aldehyde",
+      "tier": 3,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "Generic C4 aldehyde"
+    },
+    {
+      "id": "N026",
+      "name": "triphenylene hexaboronic acid",
+      "smiles": "OB(O)c1cc2cc(B(O)O)cc(B(O)O)c2cc1B(O)O",
+      "n_connections": 3,
+      "reactive_group": "boronic_acid",
+      "tier": 2,
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "compatible_linkages": [
+        "boronate_ester",
+        "boroxine"
+      ],
+      "notes": "Dense boronic acid node"
+    }
+  ],
+  "linkers": [
+    {
+      "id": "L001",
+      "name": "p-phenylenediamine",
+      "smiles": "Nc1ccc(N)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "beta-ketoenamine"
+      ],
+      "notes": "Core diamine linker"
+    },
+    {
+      "id": "L002",
+      "name": "benzidine",
+      "smiles": "Nc1ccc(-c2ccc(N)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Extended diamine"
+    },
+    {
+      "id": "L003",
+      "name": "2,5-dimethyl-p-phenylenediamine",
+      "smiles": "Cc1cc(N)cc(C)c1N",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja301130k"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "beta-ketoenamine"
+      ],
+      "notes": "Methyl-substituted diamine"
+    },
+    {
+      "id": "L004",
+      "name": "4,4'-diaminostilbene",
+      "smiles": "Nc1ccc(/C=C/c2ccc(N)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 1,
+      "source_dois": [
+        "10.1002/adma.201303577"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Conjugated diamine"
+    },
+    {
+      "id": "L005",
+      "name": "4,4'-azodianiline",
+      "smiles": "Nc1ccc(/N=N/c2ccc(N)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 1,
+      "source_dois": [
+        "10.1002/adma.201303577"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Azo linker"
+    },
+    {
+      "id": "L006",
+      "name": "2,6-diaminoanthracene",
+      "smiles": "Nc1ccc2cc3ccc(N)cc3cc2c1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Extended aromatic diamine"
+    },
+    {
+      "id": "L007",
+      "name": "2,7-diaminofluorene",
+      "smiles": "Nc1ccc2c(c1)Cc1cc(N)ccc1-2",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Rigid diamine"
+    },
+    {
+      "id": "L008",
+      "name": "4,4'-diaminobenzophenone",
+      "smiles": "Nc1ccc(C(=O)c2ccc(N)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Acceptor diamine"
+    },
+    {
+      "id": "L009",
+      "name": "2,2'-bipyridine-5,5'-diamine",
+      "smiles": "Nc1ccnc(-c2ncc(N)cc2)c1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "N-rich diamine"
+    },
+    {
+      "id": "L010",
+      "name": "hydrazine",
+      "smiles": "NN",
+      "n_connections": 2,
+      "reactive_group": "hydrazine",
+      "tier": 1,
+      "source_dois": [
+        "10.1002/anie.201300402"
+      ],
+      "compatible_linkages": [
+        "azine"
+      ],
+      "notes": "Azine condensation partner"
+    },
+    {
+      "id": "L011",
+      "name": "terephthalohydrazide",
+      "smiles": "NNC(=O)c1ccc(C(=O)NN)cc1",
+      "n_connections": 2,
+      "reactive_group": "hydrazide",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2061049"
+      ],
+      "compatible_linkages": [
+        "hydrazone"
+      ],
+      "notes": "Hydrazone linker"
+    },
+    {
+      "id": "L012",
+      "name": "2,5-diethoxyterephthalohydrazide",
+      "smiles": "CCOc1cc(C(=O)NN)cc(OCC)c1C(=O)NN",
+      "n_connections": 2,
+      "reactive_group": "hydrazide",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2061049"
+      ],
+      "compatible_linkages": [
+        "hydrazone"
+      ],
+      "notes": "Hydrazone linker in COF-42/43 family"
+    },
+    {
+      "id": "L013",
+      "name": "terephthalaldehyde",
+      "smiles": "O=Cc1ccc(C=O)cc1",
+      "n_connections": 2,
+      "reactive_group": "aldehyde",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "Dialdehyde linker"
+    },
+    {
+      "id": "L014",
+      "name": "2,5-dimethoxyterephthalaldehyde",
+      "smiles": "COc1cc(C=O)cc(OC)c1C=O",
+      "n_connections": 2,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "EDG dialdehyde"
+    },
+    {
+      "id": "L015",
+      "name": "tetrafluoroterephthalaldehyde",
+      "smiles": "O=Cc1c(F)c(F)c(C=O)c(F)c1F",
+      "n_connections": 2,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "Strongly electron-poor dialdehyde"
+    },
+    {
+      "id": "L016",
+      "name": "2,6-naphthalenedicarbaldehyde",
+      "smiles": "O=Cc1ccc2ccc(C=O)cc2c1",
+      "n_connections": 2,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "Extended dialdehyde"
+    },
+    {
+      "id": "L017",
+      "name": "thieno[3,2-b]thiophene-2,5-dicarbaldehyde",
+      "smiles": "O=Cc1cc2sc(C=O)cc2s1",
+      "n_connections": 2,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine",
+        "vinylene"
+      ],
+      "notes": "S-containing dialdehyde"
+    },
+    {
+      "id": "L018",
+      "name": "1,4-divinylbenzene",
+      "smiles": "C=Cc1ccc(C=C)cc1",
+      "n_connections": 2,
+      "reactive_group": "active_methylene",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "vinylene"
+      ],
+      "notes": "Proxy for Knoevenagel vinylene coupling"
+    },
+    {
+      "id": "L019",
+      "name": "2,2'-(1,4-phenylene)diacetonitrile",
+      "smiles": "N#CCCc1ccc(CC#N)cc1",
+      "n_connections": 2,
+      "reactive_group": "active_methylene",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/C8SC04647E"
+      ],
+      "compatible_linkages": [],
+      "notes": "SMILES WRONG 2026-07-25: encodes dipropionitrile (2 methylenes before CN) not diacetonitrile (1 methylene). Active-methylene reactivity requires alpha-CH2 adjacent to CN. Disabled pending correct SMILES."
+    },
+    {
+      "id": "L020",
+      "name": "2,2'-(2,5-thiophenediyl)diacetonitrile",
+      "smiles": "N#CCC1=CC(S1)CC#N",
+      "n_connections": 2,
+      "reactive_group": "active_methylene",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/C8SC04647E"
+      ],
+      "compatible_linkages": [],
+      "notes": "SMILES WRONG 2026-07-25: two errors — (1) ring closure C1...S1 forms a 4-membered thietane ring, not a 5-membered thiophene; (2) both arms are propionitrile (-CH2-CH2-CN) not acetonitrile. Disabled pending correct SMILES."
+    },
+    {
+      "id": "L021",
+      "name": "4,4'-biphenyldiboronic acid",
+      "smiles": "OB(O)c1ccc(-c2ccc(B(O)O)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "boronic_acid",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "compatible_linkages": [
+        "boronate_ester",
+        "boroxine"
+      ],
+      "notes": "COF-10 linker"
+    },
+    {
+      "id": "L022",
+      "name": "1,4-benzenediboronic acid",
+      "smiles": "OB(O)c1ccc(B(O)O)cc1",
+      "n_connections": 2,
+      "reactive_group": "boronic_acid",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "compatible_linkages": [
+        "boronate_ester",
+        "boroxine"
+      ],
+      "notes": "COF-5 linker"
+    },
+    {
+      "id": "L023",
+      "name": "2,5-dihydroxyterephthalic acid (catechol proxy)",
+      "smiles": "Oc1cc(C(=O)O)cc(O)c1C(=O)O",
+      "n_connections": 2,
+      "reactive_group": "catechol",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "boronate_ester"
+      ],
+      "notes": "Catechol-like linker"
+    },
+    {
+      "id": "L024",
+      "name": "p-phenylenediboronic acid",
+      "smiles": "OB(O)c1ccc(B(O)O)cc1",
+      "n_connections": 2,
+      "reactive_group": "boronic_acid",
+      "tier": 2,
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "compatible_linkages": [
+        "boronate_ester",
+        "boroxine"
+      ],
+      "notes": "Boron linker variant"
+    },
+    {
+      "id": "L025",
+      "name": "terephthalonitrile",
+      "smiles": "N#Cc1ccc(C#N)cc1",
+      "n_connections": 2,
+      "reactive_group": "nitrile",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja3082398"
+      ],
+      "compatible_linkages": [
+        "triazine"
+      ],
+      "notes": "Triazine-forming linker"
+    },
+    {
+      "id": "L026",
+      "name": "2,6-dicyanonaphthalene",
+      "smiles": "N#Cc1ccc2ccc(C#N)cc2c1",
+      "n_connections": 2,
+      "reactive_group": "nitrile",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "triazine"
+      ],
+      "notes": "Extended nitrile linker"
+    },
+    {
+      "id": "L027",
+      "name": "4,4'-dicyanobiphenyl",
+      "smiles": "N#Cc1ccc(-c2ccc(C#N)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "nitrile",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "triazine"
+      ],
+      "notes": "Rigid nitrile linker"
+    },
+    {
+      "id": "L028",
+      "name": "pyromellitic dianhydride",
+      "smiles": "O=C1OC(=O)c2cc(C(=O)OC(=O))cc(C(=O)OC(=O))c21",
+      "n_connections": 2,
+      "reactive_group": "anhydride",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imide"
+      ],
+      "notes": "Imide-forming linker"
+    },
+    {
+      "id": "L029",
+      "name": "benzophenone tetracarboxylic dianhydride",
+      "smiles": "O=C1OC(=O)c2ccc(C(c3ccc4c(c3)C(=O)OC4=O)=O)cc2",
+      "n_connections": 2,
+      "reactive_group": "anhydride",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imide"
+      ],
+      "notes": "Imide linker"
+    },
+    {
+      "id": "L030",
+      "name": "p-phenylenediamine (imide partner)",
+      "smiles": "Nc1ccc(N)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [],
+      "notes": "Disabled: duplicate SMILES of L001, imide-role linker not supported by evaluator"
+    },
+    {
+      "id": "L031",
+      "name": "1,3,5-tris(4-aminophenyl)benzene",
+      "smiles": "Nc1ccc(-c2cc(-c3ccc(N)cc3)cc(-c3ccc(N)cc3)c2)cc1",
+      "n_connections": 3,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "C3 amine linker"
+    },
+    {
+      "id": "L032",
+      "name": "1,3,5-tris(4-boronic acid phenyl)benzene",
+      "smiles": "OB(O)c1ccc(-c2cc(-c3ccc(B(O)O)cc3)cc(-c3ccc(B(O)O)cc3)c2)cc1",
+      "n_connections": 3,
+      "reactive_group": "boronic_acid",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "boronate_ester",
+        "boroxine"
+      ],
+      "notes": "C3 boronic linker"
+    },
+    {
+      "id": "L033",
+      "name": "1,3,5-tricyanobenzene",
+      "smiles": "N#Cc1cc(C#N)cc(C#N)c1",
+      "n_connections": 3,
+      "reactive_group": "nitrile",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "triazine"
+      ],
+      "notes": "C3 nitrile linker"
+    },
+    {
+      "id": "L034",
+      "name": "2,4,6-tris(4-formylphenyl)-1,3,5-triazine",
+      "smiles": "O=Cc1ccc(-c2nc(-c3ccc(C=O)cc3)nc(-c3ccc(C=O)cc3)n2)cc1",
+      "n_connections": 3,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "C3 dialdehyde-like linker"
+    },
+    {
+      "id": "L035",
+      "name": "2,4,6-tris(4-aminophenyl)-1,3,5-triazine",
+      "smiles": "Nc1ccc(-c2nc(-c3ccc(N)cc3)nc(-c3ccc(N)cc3)n2)cc1",
+      "n_connections": 3,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "C3 amine linker"
+    },
+    {
+      "id": "L036",
+      "name": "4,4'-diaminodiphenyl ether",
+      "smiles": "Nc1ccc(Oc2ccc(N)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Flexible diamine"
+    },
+    {
+      "id": "L037",
+      "name": "4,4'-diaminodiphenyl sulfone",
+      "smiles": "Nc1ccc(S(=O)(=O)c2ccc(N)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Acceptor diamine"
+    },
+    {
+      "id": "L038",
+      "name": "4,4'-diaminodiphenyl methane",
+      "smiles": "Nc1ccc(Cc2ccc(N)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Flexible diamine"
+    },
+    {
+      "id": "L039",
+      "name": "4,4'-diaminoterphenyl",
+      "smiles": "Nc1ccc(-c2ccc(-c3ccc(N)cc3)cc2)cc1",
+      "n_connections": 2,
+      "reactive_group": "amine",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone"
+      ],
+      "notes": "Long conjugated diamine"
+    },
+    {
+      "id": "L040",
+      "name": "2,7-diformylfluorene",
+      "smiles": "O=Cc1ccc2c(c1)Cc1cc(C=O)ccc1-2",
+      "n_connections": 2,
+      "reactive_group": "aldehyde",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "compatible_linkages": [
+        "imine",
+        "hydrazone",
+        "azine"
+      ],
+      "notes": "Dialdehyde linker"
+    },
+    {
+      "id": "L041",
+      "name": "1,4-bis(cyanomethyl)benzene",
+      "smiles": "N#CCc1ccc(CC#N)cc1",
+      "n_connections": 2,
+      "reactive_group": "active_methylene",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/C8SC04647E"
+      ],
+      "compatible_linkages": [
+        "vinylene"
+      ],
+      "notes": "Vinylene linker"
+    },
+    {
+      "id": "L042",
+      "name": "2,5-bis(cyanomethyl)thiophene",
+      "smiles": "N#CCC1=CC=C(S1)CC#N",
+      "n_connections": 2,
+      "reactive_group": "active_methylene",
+      "tier": 2,
+      "source_dois": [
+        "10.1039/C8SC04647E"
+      ],
+      "compatible_linkages": [
+        "vinylene"
+      ],
+      "notes": "Vinylene sulfur linker"
+    }
+  ],
+  "linkage_types": [
+    {
+      "id": "LK001",
+      "name": "imine",
+      "reaction": "aldehyde + amine -> C=N + H2O",
+      "node_group": "aldehyde",
+      "linker_group": "amine",
+      "smarts_pattern": "[C]=[N]",
+      "tier": 1,
+      "photocatalysis_relevance": "high",
+      "source_dois": [
+        "10.1021/ja2024527"
+      ],
+      "notes": "Most common dynamic covalent linkage"
+    },
+    {
+      "id": "LK002",
+      "name": "hydrazone",
+      "reaction": "aldehyde + hydrazide -> C=N-NH + H2O",
+      "node_group": "aldehyde",
+      "linker_group": "hydrazide",
+      "smarts_pattern": "[C]=[N]-[N]",
+      "tier": 1,
+      "photocatalysis_relevance": "high",
+      "source_dois": [
+        "10.1021/ja2061049"
+      ],
+      "notes": "More hydrolytically stable than imines"
+    },
+    {
+      "id": "LK003",
+      "name": "azine",
+      "reaction": "aldehyde + hydrazine -> CH=N-N=CH + H2O",
+      "node_group": "aldehyde",
+      "linker_group": "hydrazine",
+      "smarts_pattern": "[C]=[N]-[N]=[C]",
+      "tier": 1,
+      "photocatalysis_relevance": "high",
+      "source_dois": [
+        "10.1002/anie.201300402"
+      ],
+      "notes": "Key for pyrene-based photocatalytic COFs"
+    },
+    {
+      "id": "LK004",
+      "name": "beta-ketoenamine",
+      "reaction": "Tp-aldehyde + amine -> C=C-NH via tautomerization",
+      "node_group": "aldehyde_ketoenamine",
+      "linker_group": "amine",
+      "smarts_pattern": "[C]=[C]-[N]",
+      "tier": 1,
+      "photocatalysis_relevance": "high",
+      "source_dois": [
+        "10.1021/ja301130k"
+      ],
+      "notes": "Irreversible and highly stable in water"
+    },
+    {
+      "id": "LK005",
+      "name": "boronate_ester",
+      "reaction": "boronic acid + catechol -> B-O-C + H2O",
+      "node_group": "boronic_acid",
+      "linker_group": "catechol",
+      "smarts_pattern": "[B]-[O]-[C]",
+      "tier": 1,
+      "photocatalysis_relevance": "medium",
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "notes": "Foundational 2D COF linkage"
+    },
+    {
+      "id": "LK006",
+      "name": "boroxine",
+      "reaction": "boronic acid self-condensation -> B3O3 + H2O",
+      "node_group": "boronic_acid",
+      "linker_group": "boronic_acid",
+      "smarts_pattern": "[B]1OB OB O1",
+      "tier": 1,
+      "photocatalysis_relevance": "medium",
+      "source_dois": [
+        "10.1021/ja0660921"
+      ],
+      "notes": "Boron-rich linkage via dehydration"
+    },
+    {
+      "id": "LK007",
+      "name": "vinylene",
+      "reaction": "aldehyde + active methylene -> C=C (Knoevenagel)",
+      "node_group": "aldehyde",
+      "linker_group": "active_methylene",
+      "smarts_pattern": "[C]=[C]",
+      "tier": 1,
+      "photocatalysis_relevance": "high",
+      "source_dois": [
+        "10.1039/C8SC04647E"
+      ],
+      "notes": "Explicitly added; absent from ReDD-COFFEE 11-linkage set"
+    },
+    {
+      "id": "LK008",
+      "name": "triazine",
+      "reaction": "nitrile trimerization -> C3N3",
+      "node_group": "nitrile",
+      "linker_group": "nitrile",
+      "smarts_pattern": "n1cncn1",
+      "tier": 1,
+      "photocatalysis_relevance": "high",
+      "source_dois": [
+        "10.1021/ja3082398"
+      ],
+      "notes": "Ionothermal triazine formation"
+    },
+    {
+      "id": "LK009",
+      "name": "imide",
+      "reaction": "anhydride + amine -> imide + H2O",
+      "node_group": "anhydride",
+      "linker_group": "amine",
+      "smarts_pattern": "O=C-N-C=O",
+      "tier": 2,
+      "photocatalysis_relevance": "medium",
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ],
+      "notes": "Included from computational libraries"
+    }
+  ],
+  "r_groups": [
+    {
+      "id": "R001",
+      "name": "hydrogen",
+      "smiles": "[H]",
+      "attachment": "ring_substituent",
+      "effect": "baseline",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ]
+    },
+    {
+      "id": "R002",
+      "name": "methyl",
+      "smiles": "C",
+      "attachment": "ring_substituent",
+      "effect": "electron_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ]
+    },
+    {
+      "id": "R003",
+      "name": "ethyl",
+      "smiles": "CC",
+      "attachment": "ring_substituent",
+      "effect": "electron_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ]
+    },
+    {
+      "id": "R004",
+      "name": "isopropyl",
+      "smiles": "C(C)C",
+      "attachment": "ring_substituent",
+      "effect": "electron_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ]
+    },
+    {
+      "id": "R005",
+      "name": "tert-butyl",
+      "smiles": "C(C)(C)C",
+      "attachment": "ring_substituent",
+      "effect": "steric_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ]
+    },
+    {
+      "id": "R006",
+      "name": "methoxy",
+      "smiles": "OC",
+      "attachment": "ring_substituent",
+      "effect": "electron_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja301130k"
+      ]
+    },
+    {
+      "id": "R007",
+      "name": "ethoxy",
+      "smiles": "OCC",
+      "attachment": "ring_substituent",
+      "effect": "electron_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2061049"
+      ]
+    },
+    {
+      "id": "R008",
+      "name": "hydroxy",
+      "smiles": "O",
+      "attachment": "ring_substituent",
+      "effect": "electron_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja301130k"
+      ]
+    },
+    {
+      "id": "R009",
+      "name": "amino",
+      "smiles": "N",
+      "attachment": "ring_substituent",
+      "effect": "electron_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ]
+    },
+    {
+      "id": "R010",
+      "name": "dimethylamino",
+      "smiles": "N(C)C",
+      "attachment": "ring_substituent",
+      "effect": "strong_donor",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R011",
+      "name": "fluoro",
+      "smiles": "F",
+      "attachment": "ring_substituent",
+      "effect": "electron_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R012",
+      "name": "chloro",
+      "smiles": "Cl",
+      "attachment": "ring_substituent",
+      "effect": "electron_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R013",
+      "name": "bromo",
+      "smiles": "Br",
+      "attachment": "ring_substituent",
+      "effect": "electron_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R014",
+      "name": "trifluoromethyl",
+      "smiles": "C(F)(F)F",
+      "attachment": "ring_substituent",
+      "effect": "strong_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R015",
+      "name": "cyano",
+      "smiles": "C#N",
+      "attachment": "ring_substituent",
+      "effect": "strong_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/C8SC04647E"
+      ]
+    },
+    {
+      "id": "R016",
+      "name": "nitro",
+      "smiles": "[N+](=O)[O-]",
+      "attachment": "ring_substituent",
+      "effect": "strong_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R017",
+      "name": "formyl",
+      "smiles": "C=O",
+      "attachment": "ring_substituent",
+      "effect": "electron_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1021/ja2024527"
+      ]
+    },
+    {
+      "id": "R018",
+      "name": "carboxyl",
+      "smiles": "C(=O)O",
+      "attachment": "ring_substituent",
+      "effect": "electron_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R019",
+      "name": "sulfonic acid",
+      "smiles": "S(=O)(=O)O",
+      "attachment": "ring_substituent",
+      "effect": "strong_withdrawing",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R020",
+      "name": "thiomethyl",
+      "smiles": "SC",
+      "attachment": "ring_substituent",
+      "effect": "electron_donating",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R021",
+      "name": "phenyl",
+      "smiles": "c1ccccc1",
+      "attachment": "ring_substituent",
+      "effect": "pi_extension",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R022",
+      "name": "pyridyl",
+      "smiles": "c1ccncc1",
+      "attachment": "ring_substituent",
+      "effect": "acceptor_heterocycle",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R023",
+      "name": "thienyl",
+      "smiles": "c1ccsc1",
+      "attachment": "ring_substituent",
+      "effect": "pi_extension",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R024",
+      "name": "benzothiadiazole",
+      "smiles": "c1ccc2nsnc2c1",
+      "attachment": "ring_substituent",
+      "effect": "acceptor_heterocycle",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R025",
+      "name": "carbazolyl",
+      "smiles": "c1ccc2[nH]c3ccccc3c2c1",
+      "attachment": "ring_substituent",
+      "effect": "donor_heterocycle",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    },
+    {
+      "id": "R026",
+      "name": "vinyl",
+      "smiles": "C=C",
+      "attachment": "ring_substituent",
+      "effect": "pi_extension",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/C8SC04647E"
+      ]
+    },
+    {
+      "id": "R027",
+      "name": "ethynyl",
+      "smiles": "C#C",
+      "attachment": "ring_substituent",
+      "effect": "pi_extension",
+      "tier": 1,
+      "source_dois": [
+        "10.1039/D3TA00470H"
+      ]
+    }
+  ]
+}

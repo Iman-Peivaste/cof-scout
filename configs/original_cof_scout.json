@@ -1,0 +1,10 @@
+{
+  "study_id": "ara5_reasoning_mcap_v1",
+  "model": "gpt-5.6-luna",
+  "budget": 50,
+  "conditions": ["adaptive_full_contract", "static_outcome_blind"],
+  "replicates": 5,
+  "data_directory_env": "COF_SCOUT_DATA_DIR",
+  "endpoint_env": "OPENAI_BASE_URL",
+  "key_env": "OPENAI_API_KEY"
+}

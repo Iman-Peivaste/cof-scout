@@ -1,0 +1,15 @@
+{
+  "study_id": "cof_scout_v2_extension_r2",
+  "budget": 50,
+  "conditions": {
+    "A": {"model": "claude-opus-5-5", "mode": "adaptive_full_contract", "replicates": 5},
+    "B": {"model": "claude-opus-5-5", "mode": "static_outcome_blind", "replicates": 5},
+    "C": {"model": "gpt-5.6-luna", "mode": "adaptive_contract_ablation", "replicates": 5},
+    "D": {"model": "gpt-5.6-luna", "mode": "adaptive_guard_ablation", "replicates": 5},
+    "E": {"model": "gpt-6.1-sol", "mode": "adaptive_full_contract", "replicates": 5},
+    "F": {"model": "gpt-6.1-sol", "mode": "static_outcome_blind", "replicates": 5}
+  },
+  "data_directory_env": "COF_SCOUT_DATA_DIR",
+  "endpoint_env": "OPENAI_BASE_URL",
+  "key_env": "OPENAI_API_KEY"
+}

@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the COF-SCOUT paper and software record."
+title: "COF-SCOUT: code and data for 'Decomposing what a language-model agent adds to covalent organic framework discovery'"
+type: software
+version: 1.0.0
+date-released: 2026-10-26
+license: MIT
+authors:
+  - family-names: Peivaste
+    given-names: Iman
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: Luxembourg Institute of Science and Technology (LIST)
+  - family-names: Makradi
+    given-names: Ahmed
+    affiliation: Luxembourg Institute of Science and Technology (LIST)
+  - family-names: Belouettar
+    given-names: Salim
+    affiliation: Luxembourg Institute of Science and Technology (LIST)
+identifiers:
+  - type: doi
+    value: PAPER_DOI
+    description: COF-SCOUT paper
+  - type: doi
+    value: 10.1038/s41524-026-02168-w
+    description: Related Ara paper
+repository-code: "https://github.com/Iman-Peivaste/cof-scout"
+keywords:
+  - covalent organic frameworks
+  - language-model agents
+  - Bayesian optimization
+  - inverse design
+  - reproducibility

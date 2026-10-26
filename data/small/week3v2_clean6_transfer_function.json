@@ -1,0 +1,5 @@
+{
+  "slope": 0.4603819837174193,
+  "intercept": -0.09832894975094009,
+  "model": "gap_PBE_eV = slope * gap_xTB_eV + intercept"
+}

@@ -1,0 +1,8 @@
+method,method_label,count,mean,median,std
+adaptive_ara5,COF-SCOUT,5,10.8,11.0,1.6431676725154982
+one_shot_llm_portfolio,Static LLM portfolio,5,3.6,4.0,1.140175425099138
+candidate_random,Candidate random,1000,1.801,2.0,1.250184771128637
+scaffold_first_random,Scaffold-first random,1000,1.802,2.0,1.215843030277459
+scaffold_maxmin,Scaffold MaxMin,1000,6.019,6.0,0.5185633113785701
+candidate_morgan_gp_ucb,Candidate GP-UCB,200,3.035,3.0,0.9892766760156343
+scaffold_aware_morgan_gp_ucb,Scaffold-aware GP-UCB,200,6.45,7.0,1.8424093903932006

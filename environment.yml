@@ -1,0 +1,15 @@
+name: cof-scout
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.2
+  - rdkit=2025.9.3
+  - numpy=1.26.4
+  - scipy=1.17.1
+  - scikit-learn=1.5.1
+  - pandas=2.3.2
+  - xtb=6.7.1
+  - matplotlib>=3.8,<3.11
+  - httpx>=0.27,<1
+  - pytest>=8.3,<9
+  - ruff>=0.8,<1

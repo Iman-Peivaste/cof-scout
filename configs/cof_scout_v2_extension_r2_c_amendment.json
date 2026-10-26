@@ -1,0 +1,8 @@
+{
+  "study_id": "cof_scout_v2_extension_r2_c_amendment",
+  "amends": "cof_scout_v2_extension_r2",
+  "scope": "condition-C response parsing and validator plumbing only",
+  "model": "gpt-5.6-luna",
+  "budget": 50,
+  "replicates": 5
+}
