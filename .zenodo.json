@@ -1,9 +1,10 @@
 {
   "title": "COF-SCOUT: code and data for 'Decomposing what a language-model agent adds to covalent organic framework discovery'",
   "description": "Code release for the COF-SCOUT study. Large study artifacts are deposited in a separate CC BY 4.0 data record.",
+  "upload_type": "software",
   "license": "mit-license",
   "creators": [
-    {"name": "Peivaste, Iman", "orcid": "0000-0000-0000-0000", "affiliation": "Luxembourg Institute of Science and Technology (LIST)"},
+    {"name": "Peivaste, Iman", "orcid": "0000-0003-4101-0443", "affiliation": "Luxembourg Institute of Science and Technology (LIST); University of Luxembourg"},
     {"name": "Makradi, Ahmed", "affiliation": "Luxembourg Institute of Science and Technology (LIST)"},
     {"name": "Belouettar, Salim", "affiliation": "Luxembourg Institute of Science and Technology (LIST)"}
   ],
@@ -11,6 +12,6 @@
   "related_identifiers": [
     {"identifier": "PAPER_DOI", "relation": "isSupplementTo", "scheme": "doi"},
     {"identifier": "10.1038/s41524-026-02168-w", "relation": "references", "scheme": "doi"},
-    {"identifier": "ZENODO_DATA_DOI", "relation": "isSupplementedBy", "scheme": "doi"}
+    {"identifier": "10.5281/zenodo.23688942", "relation": "isSupplementedBy", "scheme": "doi"}
   ]
 }
