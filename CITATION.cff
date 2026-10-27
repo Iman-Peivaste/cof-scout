@@ -8,9 +8,9 @@ license: MIT
 authors:
   - family-names: Peivaste
     given-names: Iman
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+    orcid: "https://orcid.org/0000-0003-4101-0443"
     email: iman.peivaste@list.lu
-    affiliation: Luxembourg Institute of Science and Technology (LIST)
+    affiliation: Luxembourg Institute of Science and Technology (LIST); University of Luxembourg
   - family-names: Makradi
     given-names: Ahmed
     affiliation: Luxembourg Institute of Science and Technology (LIST)
@@ -24,6 +24,9 @@ identifiers:
   - type: doi
     value: 10.1038/s41524-026-02168-w
     description: Related Ara paper
+  - type: doi
+    value: 10.5281/zenodo.23688942
+    description: COF-SCOUT data archive
 repository-code: "https://github.com/Iman-Peivaste/cof-scout"
 keywords:
   - covalent organic frameworks

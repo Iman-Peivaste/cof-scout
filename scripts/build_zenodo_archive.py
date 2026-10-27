@@ -25,7 +25,11 @@ TEXT_SUFFIXES = {
 }
 _LOCAL_USER = os.getenv("USER", "")
 REPLACEMENTS = [
-    (re.compile(rb"https?://[^\s\"'<>]*(?:gateway|private)[^\s\"'<>]*", re.IGNORECASE), b"[REDACTED_GATEWAY_URL]", "gateway URL"),
+    (
+        re.compile(rb"gateway\.pia\.private\.list\.lu", re.IGNORECASE),
+        b"<INSTITUTIONAL_GATEWAY>",
+        "institutional gateway hostname",
+    ),
     (re.compile(re.escape(str(ROOT).encode())), b"${REPOSITORY_ROOT}", "repository path"),
     (
         re.compile(b"/" + rb"home/[^/\s]+/[^\s\"'<>]*"),
@@ -76,6 +80,15 @@ class Redaction:
     replacements: str
 
 
+@dataclass(frozen=True)
+class CompiledCacheExclusion:
+    file: str
+    source: str
+    original_sha256: str
+    source_file: str
+    appears_in_hash_list: bool
+
+
 def redact(source: Source, archive: str) -> tuple[bytes, Redaction | None]:
     raw = source.path.read_bytes()
     if source.path.suffix.lower() not in TEXT_SUFFIXES or b"\0" in raw[:8192]:
@@ -113,6 +126,49 @@ def tree_sources(root: Path, prefix: str, *, exclude: set[str] | None = None) ->
         logical = path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else f"external/{relative}"
         sources.append(Source(path, f"{prefix}/{relative}", logical))
     return sources
+
+
+def freeze_sources() -> tuple[list[Source], list[CompiledCacheExclusion]]:
+    study_root = ROOT / "output" / "studies"
+    sources: list[Source] = []
+    exclusions: list[CompiledCacheExclusion] = []
+    for study in sorted(path for path in study_root.iterdir() if path.is_dir()):
+        freeze = study / "freeze"
+        if not freeze.is_dir():
+            continue
+        hash_lists = sorted(freeze.rglob("*.sha256"))
+        hash_list_text = "\n".join(
+            path.read_text(encoding="utf-8", errors="replace") for path in hash_lists
+        )
+        for path in sorted(freeze.rglob("*")):
+            if not path.is_file():
+                continue
+            relative = path.relative_to(freeze)
+            archive_path = f"freeze_manifests/{study.name}/freeze/{relative.as_posix()}"
+            if path.suffix.lower() == ".pyc" or "__pycache__" in relative.parts:
+                source_name = path.name.split(".cpython-", 1)[0] + ".py"
+                source_path = path.parent.parent / source_name
+                if not source_path.is_file():
+                    raise FileNotFoundError(
+                        f"compiled cache has no retained source file: {path}"
+                    )
+                digest = digest_file(path)
+                exclusions.append(
+                    CompiledCacheExclusion(
+                        file=archive_path,
+                        source=path.relative_to(ROOT).as_posix(),
+                        original_sha256=digest,
+                        source_file=source_path.relative_to(ROOT).as_posix(),
+                        appears_in_hash_list=(
+                            digest in hash_list_text
+                            or relative.as_posix() in hash_list_text
+                            or path.name in hash_list_text
+                        ),
+                    )
+                )
+                continue
+            sources.append(Source(path, archive_path, path.relative_to(ROOT).as_posix()))
+    return sources, exclusions
 
 
 def campaign_sources() -> list[Source]:
@@ -156,11 +212,7 @@ def archive_definitions() -> dict[str, list[Source]]:
     study_root = ROOT / "output" / "studies"
     original = study_root / "ara5_reasoning_mcap_v1"
     sensitivities = ROOT / "output" / "analysis" / "reference_sensitivities"
-    freezes: list[Source] = []
-    for study in sorted(path for path in study_root.iterdir() if path.is_dir()):
-        freeze = study / "freeze"
-        if freeze.is_dir():
-            freezes.extend(tree_sources(freeze, f"freeze_manifests/{study.name}/freeze"))
+    freezes, _ = freeze_sources()
 
     figure_sources = tree_sources(original / "publication" / "tables", "figure_source_data/publication/tables")
     for path in (
@@ -199,13 +251,18 @@ def archive_definitions() -> dict[str, list[Source]]:
     }
 
 
-def write_archive(destination: Path, sources: list[Source]) -> list[Redaction]:
+def write_archive(
+    destination: Path,
+    sources: list[Source],
+    *,
+    archive_name: str | None = None,
+) -> list[Redaction]:
     redactions: list[Redaction] = []
     with destination.open("wb") as raw_handle:
         with gzip.GzipFile(filename="", mode="wb", fileobj=raw_handle, mtime=0) as gzip_handle:
             with tarfile.open(mode="w", fileobj=gzip_handle, format=tarfile.PAX_FORMAT) as archive:
                 for source in sorted(sources, key=lambda item: item.archive_path):
-                    data, record = redact(source, destination.name)
+                    data, record = redact(source, archive_name or destination.name)
                     if record:
                         redactions.append(record)
                     info = tarfile.TarInfo(source.archive_path)
@@ -218,11 +275,17 @@ def write_archive(destination: Path, sources: list[Source]) -> list[Redaction]:
     return redactions
 
 
-def write_redaction_log(records: list[Redaction]) -> None:
+def write_redaction_log(
+    records: list[Redaction],
+    compiled_cache_exclusions: list[CompiledCacheExclusion] | None = None,
+) -> None:
+    exclusions = compiled_cache_exclusions or []
     lines = [
         "# Redaction log", "",
-        "Only gateway URLs/hostnames, local paths and the local username were replaced in copied files.",
+        "Only the approved institutional gateway hostname, local paths and the local username were replaced in copied files.",
         "Prompts, responses, predictions, candidate selections, feedback and outcomes were otherwise unchanged.", "",
+        f"Compiled-cache exclusions: {len(exclusions)} `.pyc` files and their `__pycache__` directories were excluded; source `.py` files were retained.",
+        f"Excluded compiled caches referenced by a frozen `.sha256` list: {sum(item.appears_in_hash_list for item in exclusions)}.", "",
         "| Archive | File | Logical source | Original SHA-256 | Redacted SHA-256 | Replacements |",
         "|---|---|---|---|---|---|",
     ]
@@ -230,7 +293,64 @@ def write_redaction_log(records: list[Redaction]) -> None:
         f"| {r.archive} | `{r.file}` | `{r.source}` | `{r.original_sha256}` | `{r.redacted_sha256}` | {r.replacements} |"
         for r in records
     )
+    hash_listed = [item for item in exclusions if item.appears_in_hash_list]
+    if hash_listed:
+        lines.extend([
+            "", "## Hash-listed compiled-cache exclusions", "",
+            "| File | Logical source | Original SHA-256 | Retained source | Reason |",
+            "|---|---|---|---|---|",
+        ])
+        lines.extend(
+            f"| `{item.file}` | `{item.source}` | `{item.original_sha256}` | `{item.source_file}` | excluded compiled cache; source `.py` retained and verifiable |"
+            for item in hash_listed
+        )
     (DEST / "REDACTION_LOG.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def read_redaction_log_records() -> list[Redaction]:
+    path = DEST / "REDACTION_LOG.md"
+    if not path.is_file():
+        return []
+    records: list[Redaction] = []
+    pattern = re.compile(
+        r"^\| ([^|]+) \| `([^`]*)` \| `([^`]*)` \| `([^`]*)` \| `([^`]*)` \| ([^|]+) \|$"
+    )
+    for line in path.read_text(encoding="utf-8").splitlines():
+        match = pattern.match(line)
+        if not match:
+            continue
+        records.append(
+            Redaction(
+                archive=match.group(1).strip(),
+                file=match.group(2),
+                source=match.group(3),
+                original_sha256=match.group(4),
+                redacted_sha256=match.group(5),
+                replacements=match.group(6).strip(),
+            )
+        )
+    return records
+
+
+def rebuild_freeze_archive() -> None:
+    archive_name = "freeze_manifests.tar.gz"
+    target = DEST / archive_name
+    temporary = DEST / f".{archive_name}.tmp"
+    sources, exclusions = freeze_sources()
+    print(
+        f"rebuilding {archive_name}: {len(sources)} files; "
+        f"excluding {len(exclusions)} compiled caches",
+        flush=True,
+    )
+    records = write_archive(temporary, sources, archive_name=archive_name)
+    os.replace(temporary, target)
+    retained = [
+        record for record in read_redaction_log_records()
+        if record.archive != archive_name
+    ]
+    write_redaction_log(retained + records, exclusions)
+    write_manifest()
+    print(f"rebuilt {archive_name}; redacted {len(records)} copied files")
 
 
 def write_manifest() -> None:
@@ -252,7 +372,15 @@ def write_manifest() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--force", action="store_true", help="replace existing generated archives")
+    parser.add_argument(
+        "--only-freeze-manifests",
+        action="store_true",
+        help="rebuild only freeze_manifests.tar.gz and merge its redaction records",
+    )
     args = parser.parse_args()
+    if args.only_freeze_manifests:
+        rebuild_freeze_archive()
+        return
     if EXTERNAL_CALIBRATION == Path(".") or EXTERNAL_RESULTS == Path("."):
         parser.error(
             "set COF_SCOUT_CALIBRATION_SOURCE and COF_SCOUT_CALIBRATION_RESULTS "
@@ -270,7 +398,8 @@ def main() -> None:
             target.unlink()
         print(f"building {name}: {len(sources)} files", flush=True)
         records.extend(write_archive(target, sources))
-    write_redaction_log(records)
+    _, exclusions = freeze_sources()
+    write_redaction_log(records, exclusions)
     write_manifest()
     print(f"built {len(definitions)} archives; redacted {len(records)} copied files")
 

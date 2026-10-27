@@ -9,7 +9,8 @@ large, immutable study outputs deposited on Zenodo.
 ## Citation
 
 Please cite the COF-SCOUT paper (DOI: `PAPER_DOI`), this software release (DOI:
-`ZENODO_SOFTWARE_DOI`), and the data archive (DOI: `ZENODO_DATA_DOI`). The related Ara
+`ZENODO_SOFTWARE_DOI`), and the data archive (DOI:
+[10.5281/zenodo.23688942](https://doi.org/10.5281/zenodo.23688942)). The related Ara
 paper is <https://doi.org/10.1038/s41524-026-02168-w>.
 
 ## Install
@@ -29,7 +30,7 @@ Download and verify the Zenodo data, verify the frozen manifests, and reproduce
 Figure 2 without any LLM or network call after download:
 
 ```bash
-python scripts/download_data.py --doi ZENODO_DOI
+python scripts/download_data.py --doi 10.5281/zenodo.23688942
 export COF_SCOUT_DATA_DIR="$PWD/data/zenodo"
 python scripts/verify_freeze.py
 python scripts/reproduce_figures.py --figure 2
