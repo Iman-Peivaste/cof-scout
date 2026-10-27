@@ -3,7 +3,6 @@ message: "If you use this software or data, please cite the COF-SCOUT paper and 
 title: "COF-SCOUT: code and data for 'Decomposing what a language-model agent adds to covalent organic framework discovery'"
 type: software
 version: 1.0.0
-doi: ZENODO_SOFTWARE_DOI
 date-released: 2026-10-26
 license: MIT
 authors:

@@ -10,7 +10,6 @@
   ],
   "keywords": ["covalent organic frameworks", "language-model agents", "inverse design", "Bayesian optimization"],
   "related_identifiers": [
-    {"identifier": "PAPER_DOI", "relation": "isSupplementTo", "scheme": "doi"},
     {"identifier": "10.1038/s41524-026-02168-w", "relation": "references", "scheme": "doi"},
     {"identifier": "10.5281/zenodo.23688942", "relation": "isSupplementedBy", "scheme": "doi"}
   ]
